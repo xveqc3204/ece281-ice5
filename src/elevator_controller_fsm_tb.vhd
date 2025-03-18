@@ -101,21 +101,29 @@ begin
 	begin
         -- i_reset into initial state (o_floor 2)
         w_reset <= '1';  wait for k_clk_period;
-            assert w_floor = "0010" report "bad reset" severity failure; 
+            assert w_floor = x"2" report "bad reset" severity failure; 
         -- clear reset
 		
 		-- active UP signal
 		w_up_down <= '1'; 
 		
-		-- stay on each o_floor for 2 cycles and then move up to the next o_floor
-        w_stop <= '1';  wait for k_clk_period * 2;
-            assert w_floor = "0010" report "bad wait on floor2" severity failure;
+		-- go up a floor
         w_stop <= '0';  wait for k_clk_period;
-            assert w_floor = "0011" report "bad up from floor2" severity failure;
-		-- rest of cases
+            assert w_floor = x"3" report "bad up from floor2" severity failure;
+		-- try waiting on a floor
+        w_stop <= '1';  wait for k_clk_period * 2;
+            assert w_floor = x"3" report "bad wait on floor3" severity failure;
+		--  go up again
+		
+		-- go back down one floor
+		
+		-- go up the rest of the way
+		
+		-- stop at top
         
-        -- go back DOWN
-          
+        -- go all the way down DOWN (how many clock cycles should that take?)
+        w_up_down <= '0'; 
+  
 		  	
 		wait; -- wait forever
 	end process;	

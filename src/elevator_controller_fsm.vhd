@@ -79,14 +79,12 @@ entity elevator_controller_fsm is
 		 );
 end elevator_controller_fsm;
 
-
--- Write the code in a similar style as the Lesson 19 ICE (stoplight FSM version 2)
+ 
 architecture Behavioral of elevator_controller_fsm is
 
     -- Below you create a new variable type! You also define what values that 
     -- variable type can take on. Now you can assign a signal as 
     -- "sm_floor" the same way you'd assign a signal as std_logic
-	-- how would you modify this to go up to 15 floors?
 	type sm_floor is (s_floor1, s_floor2, s_floor3, s_floor4);
 	
 	-- Here you create variables that can take on the values defined above. Neat!	
@@ -95,34 +93,17 @@ architecture Behavioral of elevator_controller_fsm is
 begin
 
 	-- CONCURRENT STATEMENTS ------------------------------------------------------------------------------
+	
 	-- Next State Logic
-    f_Q_next <= <state> when (<condition>) else -- going up
-                ...
-                ...
-                ... -- going down
-                ...
-                ... else
-                ...; -- default case
   
 	-- Output logic
-    with f_Q select
-        o_floor <= <value> when s_floor1,
-                ...
-                ...
-                <value> when others; -- default is floor 2
-	
+
 	-------------------------------------------------------------------------------------------------------
 	
 	-- PROCESSES ------------------------------------------------------------------------------------------	
-	-- State memory ------------
-	register_proc : process (i_clk)
-    begin
-         -- synchronous reset
-        
-        -- if elevator is enabled, advance floors
-        -- if not enabled, stay at current floor
-    
-	end process register_proc;	
+	
+	-- State register ------------
+	
 	
 	-------------------------------------------------------------------------------------------------------
 	
