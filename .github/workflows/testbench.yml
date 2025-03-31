@@ -1,6 +1,6 @@
 ---
 env:
-  TESTBENCH_ENTITY: elevator_controller_fsm
+  TESTBENCH_ENTITY: elevator_controller_fsm_tb
 
 name: GHDL Testbench
 on: [push]
